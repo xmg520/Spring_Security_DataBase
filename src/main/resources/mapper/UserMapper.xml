@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+namespace:名称空间
+id:唯一标识
+resultType:返回值类型
+#{id}\?  最用使用? 方便通配符
+sql语句最后不加分号结尾
+-->
+<mapper namespace="com.mzx.security_sql.dao.UserMapper">
+
+    <select id="getUserRolesByUid" resultType="com.mzx.security_sql.pojo.Role">
+        select * from role r,user_role ur where r.id = ur.rid and ur.rid = #{id}
+    </select>
+    <select id="loadUserByUsername" resultType="com.mzx.security_sql.pojo.User">
+        select * from user where username = #{name}
+    </select>
+</mapper>
